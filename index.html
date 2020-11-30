@@ -1,0 +1,183 @@
+<html>
+	<head>
+		<title>Angle Finder</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+			*
+			{
+				font-family: "PT Sans";
+				font-weight: 400;
+			}
+			body
+			{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 100%;
+			}
+			html
+			{
+				margin: 0;
+				padding: 0;
+			}
+			.btn
+			{
+				background-color: #fff;
+				padding: 10px 20px;
+				color: black;
+				text-align: center;
+				margin: 20px 10px;
+				border: 3px solid black;
+				border-style: double;
+			}
+			.btn:hover
+			{
+				background-color: #999;
+				color: white;
+				cursor: pointer;
+			}
+			#deg,#hor
+			{
+				margin-left: 0;
+			}
+			#rad,#ver
+			{
+				margin-right: 0;
+			}
+			.selected
+			{
+				background-color: black;
+				color: white;
+			}
+			.selected:hover
+			{
+				background-color: black;
+				color: white;
+			}
+			h1{
+				margin-bottom: 10px;
+			}
+			input
+			{
+				width: 85%;
+				text-align: left;
+				
+			}
+			label
+			{
+				margin-top: 0;
+				font-size: 15px;
+				margin-right: calc( 15% - 1em );
+			}
+			p
+			{
+				font-size: 23px;
+				margin-bottom: 10px;
+			}
+			hr
+			{
+				border:1px double #999;
+				
+			}
+			#get
+			{
+				margin: 0;
+			}
+			#get:hover
+			{
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1 id = "title">Angle Finder</h1>
+			<hr style = "border: 2px solid #000; margin-bottom: -10px;">
+			<br>
+			<p>Output Type:</p>
+			<hr style = "margin-bottom: 15px;">
+			<br>
+			<a id = "deg" class = "selected btn">Degrees</a><a id = "rad" class = "btn">Radians</a>
+			<br>
+			<br>
+			<br>
+			<a id = "hor" class = "selected btn">Horizontal</a><a id = "ver" class = "btn">Vertical</a>
+			<br>
+			<br>
+			<a>( Respect to which axis )</a>
+			<br>
+			<br>
+			
+			
+			<p>Input:</p>
+			<hr>
+			<br>
+			<label>X</label>
+			<input id = "x" placeholder = "10">
+			<br>
+			<br>
+			<label>Y</label>
+			<input id = "y" placeholder = "10" style = "margin-bottom: -10px; ">
+			<br>
+			<br>
+			<br>
+			<a class = "btn" id = "get">Get Angle</a>
+			<br>
+			<br>
+			
+			<p>Output:</p>
+			<hr>
+			<p id = "output"></p>
+			
+		</div>
+		<script>
+			
+			var mode = "deg";
+			var respect = "hor";
+			document.getElementById("rad").onclick = function()
+			{
+				document.getElementById("rad").className = "selected btn";
+				document.getElementById("deg").className = "btn";
+				mode = "rad";
+			}
+			document.getElementById("deg").onclick = function()
+			{
+				document.getElementById("deg").className = "selected btn";
+				document.getElementById("rad").className = "btn";
+				mode = "deg";
+			}
+			document.getElementById("hor").onclick = function()
+			{
+				document.getElementById("hor").className = "selected btn";
+				document.getElementById("ver").className = "btn";
+				respect = "hor";
+			}
+			document.getElementById("ver").onclick = function()
+			{
+				document.getElementById("ver").className = "selected btn";
+				document.getElementById("hor").className = "btn";
+				respect = "ver";
+			}
+			
+			document.getElementById("get").onclick = function(){
+				var x = document.getElementById( "x" ).value;
+				var y = document.getElementById( "y" ).value;
+				console.log( x + " " + y )
+				
+				var angle = respect == "hor" ? Math.atan( y/x ) : Math.atan( x/y );
+				
+				document.getElementById("output").innerHTML = mode == "deg" ? toDeg ( angle ) : Math.floor( angle * 10000 ) / 10000;
+			}
+			
+			function toDeg( rad )
+			{
+				return Math.floor( ( rad * 180000 )/ Math.PI )/1000 + "&#176;";
+			}
+		
+		</script>
+	</body>
+</html>
