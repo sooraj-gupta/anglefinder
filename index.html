@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Angle Finder</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.
 css">
 		<style>
@@ -62,18 +63,24 @@ css">
 			}
 			h1{
 				margin-bottom: 10px;
+				font-weight: 700;
 			}
 			input
 			{
 				width: 85%;
 				text-align: left;
-				
+				outline: none;
+				border: none;
+				border-bottom: 1px solid black;
+				font-size: 20px;
+				border-radius: 0px;
 			}
 			label
 			{
 				margin-top: 0;
-				font-size: 15px;
+				font-size: 20px;
 				margin-right: calc( 15% - 1em );
+				font-weight: 700;
 			}
 			p
 			{
@@ -138,11 +145,11 @@ css">
 				<hr>
 				<br>
 				<label>X</label>
-				<input id = "x" placeholder = "10" type="number">
+				<input id = "x" placeholder = "123" type="number" required>
 				<br>
 				<br>
 				<label>Y</label>
-				<input id = "y" placeholder = "10" style = "margin-bottom: -10px; " type="number">
+				<input id = "y" placeholder = "123" style = "margin-bottom: -10px; " type="number">
 				<br>
 				<br>
 				<br>
