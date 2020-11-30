@@ -11,17 +11,17 @@ css">
 				font-family: "PT Sans";
 				font-weight: 400;
 			}
-			body
+			#wrapper
 			{
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				margin: 0;
 				padding: 0;
-				height: 100%;
+				min-height: 100%;
 				width: 100%;
 			}
-			html
+			html,body
 			{
 				margin: 0;
 				padding: 0;
@@ -114,48 +114,50 @@ css">
 		</style>
 	</head>
 	<body>
-		<div>
-			<h1 id = "title">Angle Finder</h1>
-			<hr style = "border: 2px solid #000; margin-bottom: -10px;">
-			<br>
-			<p>Output Type:</p>
-			<hr style = "margin-bottom: 15px;">
-			<br>
-			<a id = "deg" class = "selected btn">Degrees</a><a id = "rad" class = "btn">Radians</a>
-			<br>
-			<br>
-			<br>
-			<a id = "hor" class = "selected btn">Horizontal</a><a id = "ver" class = "btn">Vertical</a>
-			<br>
-			<br>
-			<a>( Respect to which axis )</a>
-			<br>
-			<br>
-			
-			
-			<p>Input:</p>
-			<hr>
-			<br>
-			<label>X</label>
-			<input id = "x" placeholder = "10" type="number">
-			<br>
-			<br>
-			<label>Y</label>
-			<input id = "y" placeholder = "10" style = "margin-bottom: -10px; " type="number">
-			<br>
-			<br>
-			<br>
-			<a class = "btn" id = "get">Get Angle</a>
-			<br>
-			<br>
-			
-			<p>Output:</p>
-			<hr style = "margin-bottom: 0;">
-			<div style = "position: relative; width: 100%;">
-				<p id = "output"></p>
-				<a class = "copy"><i class = "fa fa-clipboard"></i></a>
+		<div id = "wrapper">
+			<div>
+				<h1 id = "title">Angle Finder</h1>
+				<hr style = "border: 2px solid #000; margin-bottom: -10px;">
+				<br>
+				<p>Output Type:</p>
+				<hr style = "margin-bottom: 15px;">
+				<br>
+				<a id = "deg" class = "selected btn">Degrees</a><a id = "rad" class = "btn">Radians</a>
+				<br>
+				<br>
+				<br>
+				<a id = "hor" class = "selected btn">Horizontal</a><a id = "ver" class = "btn">Vertical</a>
+				<br>
+				<br>
+				<a>( Respect to which axis )</a>
+				<br>
+				<br>
+
+
+				<p>Input:</p>
+				<hr>
+				<br>
+				<label>X</label>
+				<input id = "x" placeholder = "10" type="number">
+				<br>
+				<br>
+				<label>Y</label>
+				<input id = "y" placeholder = "10" style = "margin-bottom: -10px; " type="number">
+				<br>
+				<br>
+				<br>
+				<a class = "btn" id = "get">Get Angle</a>
+				<br>
+				<br>
+
+				<p>Output:</p>
+				<hr style = "margin-bottom: 0;">
+				<div style = "position: relative; width: 100%;">
+					<p id = "output"></p>
+					<a class = "copy"><i class = "fa fa-clipboard"></i></a>
+				</div>
+
 			</div>
-			
 		</div>
 		<script>
 			
