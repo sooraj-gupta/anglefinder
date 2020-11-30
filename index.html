@@ -1,6 +1,8 @@
 <html>
 	<head>
 		<title>Angle Finder</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.
+css">
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 			@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
@@ -91,6 +93,24 @@
 			{
 				background-color: black;
 			}
+			#output
+			{
+				font-size: 40px;
+				margin-top: 10px;
+			}
+			.copy
+			{
+				position: absolute;
+				right: 0;
+				font-size: 30px;
+				top: calc( 50% - 0.5em );
+				display: none;
+			}
+			.copy:hover
+			{
+				color: gray;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -117,11 +137,11 @@
 			<hr>
 			<br>
 			<label>X</label>
-			<input id = "x" placeholder = "10">
+			<input id = "x" placeholder = "10" type="number">
 			<br>
 			<br>
 			<label>Y</label>
-			<input id = "y" placeholder = "10" style = "margin-bottom: -10px; ">
+			<input id = "y" placeholder = "10" style = "margin-bottom: -10px; " type="number">
 			<br>
 			<br>
 			<br>
@@ -130,8 +150,11 @@
 			<br>
 			
 			<p>Output:</p>
-			<hr>
-			<p id = "output"></p>
+			<hr style = "margin-bottom: 0;">
+			<div style = "position: relative; width: 100%;">
+				<p id = "output"></p>
+				<a class = "copy"><i class = "fa fa-clipboard"></i></a>
+			</div>
 			
 		</div>
 		<script>
@@ -164,18 +187,43 @@
 			}
 			
 			document.getElementById("get").onclick = function(){
+				get();
+			}
+			function get()
+			{
 				var x = document.getElementById( "x" ).value;
 				var y = document.getElementById( "y" ).value;
 				console.log( x + " " + y )
 				
 				var angle = respect == "hor" ? Math.atan( y/x ) : Math.atan( x/y );
 				
-				document.getElementById("output").innerHTML = mode == "deg" ? toDeg ( angle ) : Math.floor( angle * 10000 ) / 10000;
+				if( x * y )
+				{	document.getElementById("output").innerHTML = mode == "deg" ? toDeg ( angle ) : Math.floor( angle * 10000 ) / 10000;
+					document.getElementsByClassName("copy")[0].style.display = "inline-block";
+				}
 			}
-			
+			document.addEventListener('keyup', function(e)
+			{
+				if( e.keyCode == 13 )
+					get(); 
+				if( e.keyCode == 13 )
+					get(); 
+			});
 			function toDeg( rad )
 			{
 				return Math.floor( ( rad * 180000 )/ Math.PI )/1000 + "&#176;";
+			}
+			function copyToClipboard( str ){
+                  const el = document.createElement('textarea');
+                  el.value = str;
+                  document.body.appendChild(el);
+                  el.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(el);
+            };
+			document.getElementsByClassName("copy")[0].onclick = function()
+			{
+				copyToClipboard( document.getElementById("output").innerText );
 			}
 		
 		</script>
